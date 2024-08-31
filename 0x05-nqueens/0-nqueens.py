@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 from sys import argv as arg
 """
 python documenation
@@ -6,6 +6,7 @@ python documenation
 
 
 def n_queens():
+    """ summary """
     n = arg[1]
 
     if len(arg) != 2:
