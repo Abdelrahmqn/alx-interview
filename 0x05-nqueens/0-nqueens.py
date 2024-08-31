@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from sys import argv as arg
+import sys
 """
 python documenation
 """
@@ -7,21 +7,19 @@ python documenation
 
 def n_queens():
     """ summary """
-    n = arg[1]
-
-    if len(arg) != 2:
+    if len(sys.argv) != 2:
         print("Usage: nqueens N")
-        exit(1)
+        sys.exit(1)
 
     try:
-        n = int(arg[1])
+        n = int(sys.argv[1])
     except ValueError:
         print("N must be a number")
-        exit(1)
+        sys.exit(1)
 
     if n < 4:
         print("N must be at least 4")
-        exit(1)
+        sys.exit(1)
 
     col = set()
     posDiag = set()
