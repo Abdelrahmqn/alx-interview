@@ -1,28 +1,18 @@
 #!/usr/bin/node
-// START WARS
 
 const request = require('request');
 
-const movie = process.argv[2];
-
-const api = 'https://swapi-api.hbtn.io/api/';
-
-const url = api + 'films/' + movie + '/';
-
-request.get({ url: url }, function (error, response, body) {
-  if (!error) {
-    const characters = JSON.parse(body).characters;
-    order(characters);
-  }
+request('https://swapi-api.hbtn.io/api/films/' + process.argv[2], function (err, res, body) {
+  if (err) throw err;
+  const hero = JSON.parse(body).characters;
+  exactOrder(hero, 0);
 });
 
-function order (characters) {
-  if (characters.length > 0) {
-    request.get({ url: characters.shift() }, function (err, res, body) {
-      if (!err) {
-        console.log(JSON.parse(body).name);
-        order(characters);
-      }
-    });
-  }
-}
+const exactOrder = (hero, y) => {
+  if (y === hero.length) return;
+  request(hero[y], function (err, res, body) {
+    if (err) throw err;
+    console.log(JSON.parse(body).name);
+    exactOrder(hero, y + 1);
+  });
+};
