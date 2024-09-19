@@ -3,7 +3,7 @@
 
 
 def pascal_traingle(n):
-    """pascal's traingle in [0, x, 0] way"""
+    """Pascal's Traingle implementation"""
     if n <= 0:
         return []
 
