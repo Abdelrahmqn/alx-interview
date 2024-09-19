@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """pascal's traingle"""
 
-from typing import List
 
-
-def pascal_traingle(n: int):
+def pascal_traingle(n):
     """pascal's traingle in [0, x, 0] way"""
     if n <= 0:
         return []
