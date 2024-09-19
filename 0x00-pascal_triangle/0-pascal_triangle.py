@@ -1,9 +1,18 @@
 #!/usr/bin/python3
-"""pascal's traingle"""
+"""Pascal's Triangle Module
+This module contains a function that generates Pascal's triangle.
+The triangle is represented as a list of lists, where each inner list
+contains the numbers corresponding to a row in Pascal's triangle.
+"""
 
 
 def pascal_traingle(n):
-    """Pascal's Traingle implementation"""
+    """Pascal's Traingle implementation
+    [0, 1, 0]
+    [0 + 1, 1, 0 + 1]
+    [1, 2, 1]
+    [1, 3, 3, 1]
+    """
     if n <= 0:
         return []
 
