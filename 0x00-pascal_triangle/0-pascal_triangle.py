@@ -6,7 +6,7 @@ contains the numbers corresponding to a row in Pascal's triangle.
 """
 
 
-def pascal_traingle(n):
+def pascal_triangle(n):
     """
     Pascal's Traingle implementation
 
