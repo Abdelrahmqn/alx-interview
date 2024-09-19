@@ -7,12 +7,19 @@ contains the numbers corresponding to a row in Pascal's triangle.
 
 
 def pascal_traingle(n):
-    """Pascal's Traingle implementation
+    """
+    Pascal's Traingle implementation
+
+    parameters: (n)
+    returns: a row (list)
+
     [0, 1, 0]
     [0 + 1, 1, 0 + 1]
     [1, 2, 1]
     [1, 3, 3, 1]
     """
+    if not isinstance(n, int):
+        raise TypeError("n Must be an integer!")
     if n <= 0:
         return []
 
