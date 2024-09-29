@@ -2,18 +2,24 @@
 """LOCK BOXES PROBLEM!"""
 
 
+def join(b, T):
+    """join"""
+    res = []
+    for e in T:
+        res += b[e]
+    return res
+
+
 def canUnlockAll(boxes):
-    """boxes"""
-    box_compare = []
-    lengthBoxes = len(boxes)
-    for i in boxes:
-        if len(i) == 0 and i is not boxes[lengthBoxes-1]:
-            return False
-        for j in i:
-            box_compare.append(j)
-    print(box_compare)
-    for index, keys in enumerate(boxes):
-        if index in box_compare or index < lengthBoxes - 1:
-            return True
-        else:
-            return False
+    """LOCK BOXES"""
+    index = 0
+    total = list(set(boxes[0]) | {0})
+    added = True
+    while added:
+        added = False
+        for j in join(boxes, total[index:]):
+            if j not in total:
+                total.append(j)
+                index += 1
+                added = True
+    return len(total) == len(boxes)
