@@ -11,17 +11,27 @@ def isWinner(x, nums):
     maria, Ben = 0, 0
 
     n = max(nums)
-    primes = [True for _ in range(1, n + 1, 1)]
-    primes[0] = False
-    for i, is_prime in enumerate(primes, 1):
-        if i == 1 or not is_prime:
-            continue
-        for j in range(i + i, n + 1, i):
-            primes[j - 1] = False
-    for _, n in zip(range(x), nums):
-        primes_count = len(list(filter(lambda x: x, primes[0: n])))
-        Ben += primes_count % 2 == 0
-        maria += Ben % 2 == 1
-    if maria == Ben:
+    primes = [True for _ in range(n + 1)]
+    primes[0] = primes[1] = False
+
+    for i in range(2, int(n ** 0.5) + 1):
+        if primes[i]:
+            for j in range(i * i, n + 1, i):
+                primes[j] = False
+
+    prime_count = [0] * (n + 1)
+    for i in range(1, n + 1):
+        prime_count[i] = prime_count[i - 1] + (1 if primes[i] else 0)
+
+    for num in nums:
+        if prime_count[num] % 2 == 1:
+            maria += 1
+        else:
+            Ben += 1
+
+    if maria > Ben:
+        return 'Maria'
+    elif Ben > maria:
+        return 'Ben'
+    else:
         return None
-    return 'Meria' if maria > Ben else 'Ben'
